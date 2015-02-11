@@ -1,0 +1,8 @@
+{
+  "name": "font-family",
+  "version": "0.1.0",
+  "description": "CSS font-family parser/stringifier",
+  "main": "index.js",
+  "author": "Taro Hanamura <m@hanamurataro.com> (http://hanamurataro.com/)",
+  "license": "MIT"
+}
