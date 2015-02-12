@@ -15,7 +15,7 @@ parse('"Helvetica Neue", Helvetica, sans-serif');
 var stringify = require('font-family').stringify;
 
 stringify(['Helvetica Neue', 'Helvetica', 'sans-serif']);
-// => '"Gill Sans", "Helvetica Neue", Helvetica, sans-serif'
+// => '"Helvetica Neue", Helvetica, sans-serif'
 ```
 
 ## License
