@@ -1,0 +1,17 @@
+{
+  "name": "font-family",
+  "main": "index.js",
+  "version": "0.1.0",
+  "homepage": "https://github.com/hanamura/font-family",
+  "authors": [
+    "Taro Hanamura <m@hanamurataro.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
