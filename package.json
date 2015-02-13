@@ -4,5 +4,13 @@
   "description": "CSS font-family parser/stringifier",
   "main": "index.js",
   "author": "Taro Hanamura <m@hanamurataro.com> (http://hanamurataro.com/)",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hanamura/font-family.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hanamura/font-family/issues"
+  },
+  "homepage": "https://github.com/hanamura/font-family"
 }
