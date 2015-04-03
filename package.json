@@ -23,6 +23,7 @@
     "vinyl-source-stream": "1.0.0"
   },
   "scripts": {
-    "start": "npm i && gulp watch"
+    "start": "npm i && gulp watch",
+    "test": "node test"
   }
 }
