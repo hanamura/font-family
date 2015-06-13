@@ -1,1 +1,0 @@
-window.FontFamily = require('./index');
