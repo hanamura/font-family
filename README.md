@@ -2,6 +2,12 @@
 
 CSS font-family parser/stringifier.
 
+## Installation
+
+```sh
+npm install font-family
+```
+
 ## Example
 
 ```javascript
