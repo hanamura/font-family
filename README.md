@@ -1,4 +1,4 @@
-# font-family
+# font-family [![Build Status](https://travis-ci.org/hanamura/font-family.svg?branch=master)](https://travis-ci.org/hanamura/font-family)
 
 CSS font-family parser/stringifier.
 
