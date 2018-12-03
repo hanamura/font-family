@@ -4,11 +4,12 @@
 // states
 // ------
 
-var PLAIN      = 0;
-var STRINGS    = 1;
-var ESCAPING   = 2;
-var IDENTIFIER = 3;
-var SEPARATING = 4;
+var PLAIN                = 0;
+var STRINGS              = 1;
+var ESCAPING             = 2;
+var IDENTIFIER           = 3;
+var SEPARATING           = 4;
+var SPACEAFTERIDENTIFIER = 5;
 
 // patterns
 // --------
@@ -125,10 +126,31 @@ var parse = function(str) {
 
       } else if (spacePattern.test(c)) {
 
+        state = SPACEAFTERIDENTIFIER;
+      } else {
+
+        throw new Error('Parse error');
+
+      }
+    } else if (state === SPACEAFTERIDENTIFIER) {
+
+      if (!c) {
+
+        names.push(buffer);
+        break;
+
+      } else if (identifierPattern.test(c)) {
+
+        buffer += ' ' + c;
+        state = IDENTIFIER;
+
+      } else if (c === ',') {
+
         names.push(buffer);
         buffer = '';
-        state = SEPARATING;
+        state = PLAIN;
 
+      } else if (spacePattern.test(c)) {
       } else {
 
         throw new Error('Parse error');
