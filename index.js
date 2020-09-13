@@ -10,6 +10,7 @@ var ESCAPING             = 2;
 var IDENTIFIER           = 3;
 var SEPARATING           = 4;
 var SPACEAFTERIDENTIFIER = 5;
+var ESCAPINGIDENTIFIER   = 6;
 
 // patterns
 // --------
@@ -127,10 +128,22 @@ var parse = function(str) {
       } else if (spacePattern.test(c)) {
 
         state = SPACEAFTERIDENTIFIER;
+      } else if (c === "\\") {
+
+        state = ESCAPINGIDENTIFIER;
       } else {
 
-        throw new Error('Parse error');
+      }
+    } else if (state === ESCAPINGIDENTIFIER) {
 
+      if (/[0-9a-f]/i.test(c)) {
+        // TODO: Support escaped unicode characters (backslash followed by hex digits)
+        // https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident
+
+        throw new Error('Parse error');
+      } else {
+        buffer += c;
+        state = IDENTIFIER;
       }
     } else if (state === SPACEAFTERIDENTIFIER) {
 

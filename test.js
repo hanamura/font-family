@@ -31,6 +31,20 @@ describe('font-family', function() {
       expect(result[1]).to.equal('Helvetica');
       expect(result[2]).to.equal('sans-serif');
     });
+
+    it('should parse a family name with an escaped space', function() {
+      var result = parse('Font Awesome\\ 5 Free');
+
+      expect(result).to.have.length(1);
+      expect(result[0]).to.equal('Font Awesome 5 Free');
+    });
+
+    it('should parse a family name with an escaped backslash', function() {
+      var result = parse('Foo\\\\Bar');
+
+      expect(result).to.have.length(1);
+      expect(result[0]).to.equal('Foo\\Bar');
+    });
   });
 
   describe('stringify()', function() {
