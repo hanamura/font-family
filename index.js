@@ -4,11 +4,12 @@
 // states
 // ------
 
-var PLAIN      = 0;
-var STRINGS    = 1;
-var ESCAPING   = 2;
-var IDENTIFIER = 3;
-var SEPARATING = 4;
+var PLAIN            = 0;
+var STRINGS          = 1;
+var ESCAPING         = 2;
+var IDENTIFIER       = 3;
+var SEPARATING       = 4;
+var IDENTIFIER_SPACE = 5;
 
 // patterns
 // --------
@@ -125,10 +126,37 @@ var parse = function(str) {
 
       } else if (spacePattern.test(c)) {
 
+        state = IDENTIFIER_SPACE;
+
+      } else {
+
+        throw new Error('Parse error');
+
+      }
+
+    } else if (state === IDENTIFIER_SPACE) {
+
+      // an unquoted name may be several identifiers separated by spaces;
+      // the spaces between them collapse into a single space
+
+      if (!c) {
+
+        names.push(buffer);
+        break;
+
+      } else if (identifierPattern.test(c)) {
+
+        buffer += ' ';
+        state = IDENTIFIER;
+        i--;
+
+      } else if (c === ',') {
+
         names.push(buffer);
         buffer = '';
-        state = SEPARATING;
+        state = PLAIN;
 
+      } else if (spacePattern.test(c)) {
       } else {
 
         throw new Error('Parse error');
